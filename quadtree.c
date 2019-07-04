@@ -1,11 +1,3 @@
-//
-//  quadtree.c
-//  quadtree
-//
-//  Created by William on 7/3/19.
-//  Copyright © 2019 William. All rights reserved.
-//
-
 #include "quadtree.h"
 
 #include <stdio.h>
@@ -54,7 +46,7 @@ void geraQuad(Img* pic, float minDetail, QuadNode* node) {
     gm = gm / reg_size;
     bm = bm / reg_size;
 
-    // calculo da distancia euclidiana das componentes e nivel do detalhe
+    // o desvio padrao das componentes -> nivel do detalhe
     float dr, dg, db;
     float detalhe = 0.0;
     int r, g, b;
@@ -80,7 +72,7 @@ void geraQuad(Img* pic, float minDetail, QuadNode* node) {
         node->color[1] = 255;
         node->color[2] = 0;
 
-        // divide o quadrante <=== nao sei aida se x e y estao certos!
+        // divide o quadrante
         int x = node->x;
         int y = node->y;
         QuadNode* nw = newNode(x, y, node->width / 2, node->height / 2);
@@ -118,41 +110,6 @@ QuadNode* geraQuadtree(Img* pic, float minDetail) {
 
     QuadNode* raiz = newNode(0, 0, width, height);
     geraQuad(pic, minDetail, raiz);
-    return raiz;
-
-    //#define DEMO
-#ifdef DEMO
-
-    /************************************************************/
-    /* Teste: criando uma raiz e dois nodos a mais              */
-    /************************************************************/
-
-    QuadNode* raiz = newNode(0, 0, width, height);
-    raiz->status = PARCIAL;
-    raiz->color[0] = 0;
-    raiz->color[1] = 0;
-    raiz->color[2] = 255;
-
-    QuadNode* nw = newNode(width / 2, 0, width / 2, height / 2);
-    nw->status = PARCIAL;
-    nw->color[0] = 0;
-    nw->color[1] = 0;
-    nw->color[2] = 255;
-
-    // Aponta da raiz para o nodo nw
-    raiz->NW = nw;
-
-    QuadNode* nw2 = newNode(width / 2 + width / 4, 0, width / 4, height / 4);
-    nw2->status = CHEIO;
-    nw2->color[0] = 255;
-    nw2->color[1] = 0;
-    nw2->color[2] = 0;
-
-    // Aponta do nodo nw para o nodo nw2
-    nw->NW = nw2;
-
-#endif
-    // Finalmente, retorna a raiz da árvore
     return raiz;
 }
 

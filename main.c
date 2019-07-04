@@ -1,10 +1,3 @@
-//
-//  main.c
-//  quadtree
-//
-//  Created by William on 7/3/19.
-//  Copyright © 2019 William. All rights reserved.
-//
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -15,7 +8,7 @@
 #include <GLUT/glut.h>
 
 
-#include "SOIL.h"
+#include "include/SOIL.h"
 
 #include "quadtree.h"
 
@@ -161,4 +154,3 @@ void draw()
     
     glutSwapBuffers();
 }
-

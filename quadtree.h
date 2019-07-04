@@ -1,11 +1,3 @@
-//
-//  quadtree.h
-//  quadtree
-//
-//  Created by William on 7/3/19.
-//  Copyright © 2019 William. All rights reserved.
-//
-
 #ifndef QUADTREE_H
 #define QUADTREE_H
 
